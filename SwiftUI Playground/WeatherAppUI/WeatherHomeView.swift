@@ -41,50 +41,48 @@ struct WeatherHomeView: View {
                             .foregroundStyle(.white)
                             .shadow(radius: 5)
 
-                        Text("32°")
-                            .font(.system(size: 45))
-                            .foregroundStyle(.white)
-                            .shadow(radius: 5)
-                            .opacity(getTitleOpacity())
-
-                        Text("局部多云")
-                            .foregroundStyle(.primary)
-                            .foregroundStyle(.white)
-                            .shadow(radius: 5)
-                            .opacity(getTitleOffset())
-
-                        Text("最高35° 最低24°")
-                            .foregroundStyle(.primary)
-                            .foregroundStyle(.white)
-                            .shadow(radius: 5)
-                            .opacity(getTitleOpacity())
+                        Group {
+                            Text("32°")
+                                .font(.system(size: 45))
+                            Text("局部多云")
+                                .foregroundStyle(.primary)
+                            Text("最高35° 最低24°")
+                                .foregroundStyle(.primary)
+                        }
+                        .foregroundStyle(.white)
+                        .shadow(radius: 5)
+                        .opacity(getTitleOpacity())
                     }
+                    // 抵消，保持不动
                     .offset(y: -offset)
+                    // 向下拉计算一个位移量
                     .offset(y: offset > 0 ? (offset / UIScreen.main.bounds.width) * 100 : 0)
                     .offset(y: getTitleOffset())
 
                     VStack(spacing: 8) {
-                        StackView(titleView: {
-                            Label {
-                                Text("Hourly Forecast")
-                            }
-                            icon: {
-                                Image(systemName: "clock")
-                            }
-                        }) {
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                HStack(spacing: 15) {
-                                    ForecastView(time: "12 PM", celcius: 32, image: "sun.min")
+                        ForEach(0 ... 10, id: \.self) { _ in
+                            StackView(titleView: {
+                                Label {
+                                    Text("Hourly Forecast")
+                                }
+                                icon: {
+                                    Image(systemName: "clock")
+                                }
+                            }) {
+                                ScrollView(.horizontal, showsIndicators: false) {
+                                    HStack(spacing: 15) {
+                                        ForecastView(time: "12 PM", celcius: 32, image: "sun.min")
 
-                                    ForecastView(time: "1 PM", celcius: 32, image: "sun.min")
+                                        ForecastView(time: "1 PM", celcius: 32, image: "sun.min")
 
-                                    ForecastView(time: "2 PM", celcius: 32, image: "sun.min")
+                                        ForecastView(time: "2 PM", celcius: 32, image: "sun.min")
 
-                                    ForecastView(time: "3 PM", celcius: 32, image: "sun.min")
+                                        ForecastView(time: "3 PM", celcius: 32, image: "sun.min")
 
-                                    ForecastView(time: "4 PM", celcius: 32, image: "sun.min")
+                                        ForecastView(time: "4 PM", celcius: 32, image: "sun.min")
 
-                                    ForecastView(time: "5 PM", celcius: 32, image: "sun.min")
+                                        ForecastView(time: "5 PM", celcius: 32, image: "sun.min")
+                                    }
                                 }
                             }
                         }
@@ -110,17 +108,16 @@ struct WeatherHomeView: View {
         let titleOffset = -getTitleOffset()
         let progress = titleOffset / 20
         let opacity = 1 - progress
-        print(opacity)
         return opacity
     }
 
     func getTitleOffset() -> CGFloat {
         if offset < 0 {
-            let progress = offset / 120
+            let progress = -offset / 120
 
             let newOffset = (progress <= 1.0 ? progress : 1) * 20
 
-            return newOffset
+            return -newOffset
         }
         return 0
     }
