@@ -31,28 +31,33 @@ struct WeatherHomeView: View {
                     .frame(width: proxy.size.width, height: proxy.size.height)
             }
             .ignoresSafeArea()
-            .overlay(.ultraThinMaterial)
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
                     VStack(alignment: .center, spacing: 5) {
-                        Text("成都")
-                            .font(.system(size: 35))
-                            .foregroundStyle(.white)
-                            .shadow(radius: 5)
+                        ZStack {
+                            Text("成都市")
+                                .font(.largeTitle)
+                                .shadow(radius: 5)
+                            Text("27° | 大部晴朗")
+                                .font(.title3)
+                                .fontWeight(.medium)
+                                .offset(y: 35)
+                                .opacity(1 - getTitleOpacity())
+                        }
 
                         Group {
-                            Text("32°")
-                                .font(.system(size: 45))
-                            Text("局部多云")
-                                .foregroundStyle(.primary)
-                            Text("最高35° 最低24°")
-                                .foregroundStyle(.primary)
+                            Text("27°")
+                                .font(.system(size: 96, weight: .thin))
+                            Text("大部晴朗")
+                                .font(.title3)
+                            Text("最高32° 最低22°")
+                                .font(.title3)
                         }
-                        .foregroundStyle(.white)
                         .shadow(radius: 5)
                         .opacity(getTitleOpacity())
                     }
+                    .foregroundStyle(.white)
                     // 抵消，保持不动
                     .offset(y: -offset)
                     // 向下拉计算一个位移量
@@ -87,8 +92,9 @@ struct WeatherHomeView: View {
                             }
                         }
                     }
+                    .padding(.top, topEdge)
                 }
-                .padding(.top, 25 + topEdge)
+                .padding(.top, 50 + topEdge)
                 .padding([.horizontal, .bottom])
                 .overlay(GeometryReader { proxy -> Color in
 
@@ -113,7 +119,7 @@ struct WeatherHomeView: View {
 
     func getTitleOffset() -> CGFloat {
         if offset < 0 {
-            let progress = -offset / 120
+            let progress = -offset / 160
 
             let newOffset = (progress <= 1.0 ? progress : 1) * 20
 

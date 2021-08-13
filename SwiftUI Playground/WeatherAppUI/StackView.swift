@@ -37,7 +37,7 @@ struct StackView<Title: View, Content: View>: View {
                     .padding()
             }
             .background(.ultraThinMaterial, in: CornerShape(corners: [.bottomLeft, .bottomRight], radius: 12))
-            .offset(y: topOffset >= 120 ? 0 : topOffset - 120)
+            .offset(y: topOffset >= 160 ? 0 : topOffset - 160)
             .zIndex(0)
             .clipped()
             .opacity(getOpacity())
@@ -45,14 +45,14 @@ struct StackView<Title: View, Content: View>: View {
         .colorScheme(.dark)
         .cornerRadius(12)
         .opacity(getOpacity())
-        .offset(y: topOffset >= 120 ? 0 : -topOffset + 120)
+        .offset(y: topOffset >= 160 ? 0 : -topOffset + 160)
         .background(
             GeometryReader { proxy -> Color in
                 let minY = proxy.frame(in: .global).minY
                 let maxY = proxy.frame(in: .global).maxY
                 DispatchQueue.main.async {
                     self.topOffset = minY
-                    self.bottomOffset = maxY - 120
+                    self.bottomOffset = maxY - 160
                 }
                 return Color.clear
             }
