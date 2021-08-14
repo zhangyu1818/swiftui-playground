@@ -5,6 +5,7 @@
 //  Created by ZhangYu on 2021/8/10.
 //
 
+import SpriteKit
 import SwiftUI
 
 struct WeatherView: View {
@@ -31,6 +32,9 @@ struct WeatherHomeView: View {
                     .frame(width: proxy.size.width, height: proxy.size.height)
             }
             .ignoresSafeArea()
+            .overlay(.ultraThinMaterial)
+
+            SpriteView(scene: Rain(), options: [.allowsTransparency])
 
             ScrollView(.vertical, showsIndicators: false) {
                 VStack {
@@ -112,6 +116,11 @@ struct WeatherHomeView: View {
                             )
                         }
                     }
+                    .overlay(
+                        SpriteView(scene: RainFall(), options: [.allowsTransparency])
+                            .offset(y: -10)
+                            .offset(y: -(offset + topEdge) > 160 ? -(offset + (160 + topEdge)) : 0)
+                    )
                     .padding(.top, topEdge)
                     .padding(.bottom, 300)
                 }
@@ -153,5 +162,38 @@ struct WeatherHomeView: View {
 struct WeatherHomeView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherView()
+    }
+}
+
+class Rain: SKScene {
+    override func sceneDidLoad() {
+        size = UIScreen.main.bounds.size
+        scaleMode = .resizeFill
+
+        anchorPoint = CGPoint(x: 0.5, y: 1)
+
+        backgroundColor = .clear
+
+        let node = SKEmitterNode(fileNamed: "Rain.sks")!
+        addChild(node)
+
+        node.particlePositionRange.dx = UIScreen.main.bounds.width
+    }
+}
+
+class RainFall: SKScene {
+    override func sceneDidLoad() {
+        size = UIScreen.main.bounds.size
+        scaleMode = .resizeFill
+
+        let height = UIScreen.main.bounds.height
+        anchorPoint = CGPoint(x: 0.5, y: (height - 5) / height)
+
+        backgroundColor = .clear
+
+        let node = SKEmitterNode(fileNamed: "RainFall.sks")!
+        addChild(node)
+
+        node.particlePositionRange.dx = UIScreen.main.bounds.width - 30
     }
 }

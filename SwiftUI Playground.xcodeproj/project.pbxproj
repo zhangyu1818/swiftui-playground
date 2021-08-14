@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2A4350FA26C8104200E7C877 /* Rain.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A4350F826C8104200E7C877 /* Rain.sks */; };
+		2A4350FB26C8104300E7C877 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2A4350F926C8104200E7C877 /* Assets.xcassets */; };
+		2A4350FD26C8145E00E7C877 /* RainFall.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2A4350FC26C8145D00E7C877 /* RainFall.sks */; };
 		2AB2736A26C2C163000D17A4 /* SwiftUI_PlaygroundApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2736926C2C163000D17A4 /* SwiftUI_PlaygroundApp.swift */; };
 		2AB2736C26C2C163000D17A4 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2736B26C2C163000D17A4 /* ContentView.swift */; };
 		2AB2736E26C2C164000D17A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AB2736D26C2C164000D17A4 /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2A4350F826C8104200E7C877 /* Rain.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Rain.sks; sourceTree = "<group>"; };
+		2A4350F926C8104200E7C877 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2A4350FC26C8145D00E7C877 /* RainFall.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = RainFall.sks; sourceTree = "<group>"; };
 		2AB2736626C2C163000D17A4 /* SwiftUI Playground.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SwiftUI Playground.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AB2736926C2C163000D17A4 /* SwiftUI_PlaygroundApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUI_PlaygroundApp.swift; sourceTree = "<group>"; };
 		2AB2736B26C2C163000D17A4 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -83,6 +89,9 @@
 				2AB2737C26C2C980000D17A4 /* StackView.swift */,
 				2AB2737E26C2CA34000D17A4 /* CornerShape.swift */,
 				2AF7C3CB26C7AE06006B64D2 /* WeatherItem.swift */,
+				2A4350F826C8104200E7C877 /* Rain.sks */,
+				2A4350F926C8104200E7C877 /* Assets.xcassets */,
+				2A4350FC26C8145D00E7C877 /* RainFall.sks */,
 			);
 			path = WeatherAppUI;
 			sourceTree = "<group>";
@@ -145,7 +154,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A4350FA26C8104200E7C877 /* Rain.sks in Resources */,
 				2AB2737126C2C164000D17A4 /* Preview Assets.xcassets in Resources */,
+				2A4350FB26C8104300E7C877 /* Assets.xcassets in Resources */,
+				2A4350FD26C8145E00E7C877 /* RainFall.sks in Resources */,
 				2AB2736E26C2C164000D17A4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
