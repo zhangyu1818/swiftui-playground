@@ -65,34 +65,55 @@ struct WeatherHomeView: View {
                     .offset(y: getTitleOffset())
 
                     VStack(spacing: 8) {
-                        ForEach(0 ... 10, id: \.self) { _ in
-                            StackView(titleView: {
-                                Label {
-                                    Text("Hourly Forecast")
-                                }
-                                icon: {
-                                    Image(systemName: "clock")
-                                }
-                            }) {
-                                ScrollView(.horizontal, showsIndicators: false) {
-                                    HStack(spacing: 15) {
-                                        ForecastView(time: "12 PM", celcius: 32, image: "sun.min")
-
-                                        ForecastView(time: "1 PM", celcius: 32, image: "sun.min")
-
-                                        ForecastView(time: "2 PM", celcius: 32, image: "sun.min")
-
-                                        ForecastView(time: "3 PM", celcius: 32, image: "sun.min")
-
-                                        ForecastView(time: "4 PM", celcius: 32, image: "sun.min")
-
-                                        ForecastView(time: "5 PM", celcius: 32, image: "sun.min")
+                        AirQualityView()
+                        HoursItemView()
+                        TenDaysWeatherView()
+                        MapWeatherView()
+                        HStack(spacing: 12) {
+                            StackView(
+                                titleView: {
+                                    Label {
+                                        Text("体感温度")
+                                            .foregroundStyle(.secondary)
                                     }
+                                    icon: {
+                                        Image(systemName: "thermometer")
+                                    }
+                                },
+                                contentView: {
+                                    VStack(alignment: .leading) {
+                                        Text("31°")
+                                            .font(.largeTitle.bold())
+                                        Spacer()
+                                        Text("潮湿使人感觉更暖和。")
+                                    }
+                                    .padding()
                                 }
-                            }
+                            )
+                            StackView(
+                                titleView: {
+                                    Label {
+                                        Text("湿度")
+                                            .foregroundStyle(.secondary)
+                                    }
+                                    icon: {
+                                        Image(systemName: "humidity")
+                                    }
+                                },
+                                contentView: {
+                                    VStack(alignment: .leading) {
+                                        Text("61%")
+                                            .font(.largeTitle.bold())
+                                        Spacer()
+                                        Text("目前露点温度为20°。")
+                                    }
+                                    .padding()
+                                }
+                            )
                         }
                     }
                     .padding(.top, topEdge)
+                    .padding(.bottom, 300)
                 }
                 .padding(.top, 50 + topEdge)
                 .padding([.horizontal, .bottom])
@@ -132,31 +153,5 @@ struct WeatherHomeView: View {
 struct WeatherHomeView_Previews: PreviewProvider {
     static var previews: some View {
         WeatherView()
-    }
-}
-
-struct ForecastView: View {
-    var time: String
-    var celcius: Int
-    var image: String
-
-    var body: some View {
-        VStack(spacing: 15) {
-            Text(time)
-                .font(.callout.bold())
-                .foregroundStyle(.white)
-
-            Image(systemName: image)
-                .font(.title2)
-                .symbolVariant(.fill)
-                .symbolRenderingMode(.palette)
-                .foregroundStyle(.yellow, .white)
-                .frame(height: 30)
-
-            Text("\(celcius)°")
-                .font(.callout.bold())
-                .foregroundStyle(.white)
-        }
-        .padding(.horizontal, 10)
     }
 }

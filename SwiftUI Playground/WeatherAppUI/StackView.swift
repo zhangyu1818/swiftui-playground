@@ -14,7 +14,9 @@ struct StackView<Title: View, Content: View>: View {
     @State var topOffset: CGFloat = 0
     @State var bottomOffset: CGFloat = 0
 
-    init(@ViewBuilder titleView: @escaping () -> Title, @ViewBuilder contentView: @escaping () -> Content) {
+    init(@ViewBuilder titleView: @escaping () -> Title,
+         @ViewBuilder contentView: @escaping () -> Content)
+    {
         self.titleView = titleView()
         self.contentView = contentView()
     }
@@ -31,16 +33,13 @@ struct StackView<Title: View, Content: View>: View {
                 .background(.ultraThinMaterial, in: CornerShape(corners: bottomOffset < 38 ? .allCorners : [.topLeft, .topRight], radius: 12))
                 .zIndex(1)
 
-            VStack {
-                Divider()
-                contentView
-                    .padding()
-            }
-            .background(.ultraThinMaterial, in: CornerShape(corners: [.bottomLeft, .bottomRight], radius: 12))
-            .offset(y: topOffset >= 160 ? 0 : topOffset - 160)
-            .zIndex(0)
-            .clipped()
-            .opacity(getOpacity())
+            contentView
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.ultraThinMaterial, in: CornerShape(corners: [.bottomLeft, .bottomRight], radius: 12))
+                .offset(y: topOffset >= 160 ? 0 : topOffset - 160)
+                .zIndex(0)
+                .clipped()
+                .opacity(getOpacity())
         }
         .colorScheme(.dark)
         .cornerRadius(12)
@@ -57,7 +56,7 @@ struct StackView<Title: View, Content: View>: View {
                 return Color.clear
             }
         )
-        .modifier(CornerModifier(bottomOffset: $bottomOffset))
+        .modifier(CornerModifier(bottomOffset: bottomOffset))
     }
 
     func getOpacity() -> CGFloat {
@@ -70,7 +69,7 @@ struct StackView<Title: View, Content: View>: View {
 }
 
 struct CornerModifier: ViewModifier {
-    @Binding var bottomOffset: CGFloat
+    var bottomOffset: CGFloat
 
     func body(content: Content) -> some View {
         if bottomOffset < 38 {

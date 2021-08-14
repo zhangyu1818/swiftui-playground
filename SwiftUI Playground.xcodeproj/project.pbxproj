@@ -14,6 +14,7 @@
 		2AB2737B26C2C20C000D17A4 /* WeatherHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2737A26C2C20C000D17A4 /* WeatherHomeView.swift */; };
 		2AB2737D26C2C980000D17A4 /* StackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2737C26C2C980000D17A4 /* StackView.swift */; };
 		2AB2737F26C2CA34000D17A4 /* CornerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AB2737E26C2CA34000D17A4 /* CornerShape.swift */; };
+		2AF7C3CC26C7AE06006B64D2 /* WeatherItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF7C3CB26C7AE06006B64D2 /* WeatherItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		2AB2737A26C2C20C000D17A4 /* WeatherHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherHomeView.swift; sourceTree = "<group>"; };
 		2AB2737C26C2C980000D17A4 /* StackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StackView.swift; sourceTree = "<group>"; };
 		2AB2737E26C2CA34000D17A4 /* CornerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CornerShape.swift; sourceTree = "<group>"; };
+		2AF7C3CB26C7AE06006B64D2 /* WeatherItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				2AB2737A26C2C20C000D17A4 /* WeatherHomeView.swift */,
 				2AB2737C26C2C980000D17A4 /* StackView.swift */,
 				2AB2737E26C2CA34000D17A4 /* CornerShape.swift */,
+				2AF7C3CB26C7AE06006B64D2 /* WeatherItem.swift */,
 			);
 			path = WeatherAppUI;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				2AB2736C26C2C163000D17A4 /* ContentView.swift in Sources */,
 				2AB2736A26C2C163000D17A4 /* SwiftUI_PlaygroundApp.swift in Sources */,
 				2AB2737D26C2C980000D17A4 /* StackView.swift in Sources */,
+				2AF7C3CC26C7AE06006B64D2 /* WeatherItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
